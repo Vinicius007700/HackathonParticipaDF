@@ -86,6 +86,11 @@ A solução utiliza uma abordagem em camadas ("Pipeline de Detecção") para max
 
 4.  **Validação Cruzada e Heurísticas**:
     * Os nomes candidatos identificados pela IA passam por uma validação dupla para garantir que não são palavras comuns (falsos positivos):
+
+        * **Regras Blacklist**: Utilização de uma lista de bloqueio categorizada para refinar a extração:
+            * **INVALIDADORA**: Termos que, se presentes, descartam imediatamente o candidato (ex: "Secretaria", "Ministério"), pois indicam que a IA confundiu uma organização com uma pessoa.
+            * **LIMPEZA**: Termos ignorados durante a montagem do nome, como pronomes de tratamento (ex: "Sr.", "Sra.", "Dr.").
+            * **CORTE**: Termos que sinalizam o fim do nome próprio e o início de um contexto externo, servindo para truncar a captura quando a IA excede os limites do nome (ex: cargos ou departamentos colados ao nome).
         * **Base IBGE**: Verificação se o nome consta na base de dados do Censo IBGE.
         * **Verificação de Vocabulário**: Se o nome não for comum, o sistema verifica se é uma palavra de dicionário (ex: "Mesa", "Cadeira"). Se não for palavra de dicionário, é considerado um nome próprio raro, aumentando a sensibilidade do modelo.
 
