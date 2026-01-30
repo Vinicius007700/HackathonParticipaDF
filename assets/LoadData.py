@@ -93,6 +93,6 @@ class LoadData:
             df = pd.read_excel(f'data/{nome_arquivo}.xlsx', engine='openpyxl')
             return df
         except:
-            print("Erro ao abrir Excel.")
+            print(f"Erro ao abrir Excel. Verifique se o arquivo tem o endereço: data/{nome_arquivo}.xlsx")
             sys.exit()
             return
