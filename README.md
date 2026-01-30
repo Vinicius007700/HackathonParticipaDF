@@ -1,6 +1,8 @@
 # Solução de Anonimização - Hackathon Participa DF (Categoria Acesso à Informação)
 
-Este projeto apresenta uma solução automatizada para identificar dados pessoais em pedidos de acesso à informação, utilizando técnicas híbridas de Expressões Regulares (Regex) e Processamento de Linguagem Natural (NLP).
+Este projeto apresenta uma solução automatizada para identificar dados pessoais em pedidos de acesso à informação, utilizando técnicas híbridas de Expressões Regulares (Regex) e Processamento de Linguagem Natural (NLP), por meio da biblioteca Spacy.
+
+
 
 ## 🗂️ Estrutura do Projeto 
 
@@ -19,7 +21,7 @@ A organização dos arquivos segue uma lógica modular para facilitar a manuten�
 ## ⚙️ Instalação e Configuração
 
 ### 1. Pré-requisitos
- **Linguagem**: Python 3.12.3 ou superior.
+ **Linguagem**: Python 3.12.3. OBS: versões mais recentes do python não irão funcionar.
  **Sistema Operacional**: Windows, Linux ou macOS.
 
 ### 2. Configuração do Ambiente 
@@ -34,7 +36,9 @@ venv\Scripts\activate
 
 **Linux/ MacOS:**
 bash
+
 python3 -m venv venv
+
 source venv/bin/activate
 
 
@@ -50,20 +54,17 @@ Entrada esperada(`data/amostra.xlsx`): O arquivo deve ser uma planilha Excel (.x
 
 Ou seja, este formato de entrada a mesma estrutura do arquivo que foi oferecido de exemplo.
 
-### 4. Instalação de Dependências
+### 4. Instalação de Dependências e Como executar:
+bash
+
 
 pip install -r requirements.txt
-
-
-## Execução
-### 1. Como Executar
-
-O nosso script foi configurado para processar arquivos Excel, conforme explicado na seção `Formato de Dados`. Então, basta rodar o arquivo com o comando:
 
 python3 main.py
 
 
-### 2. Saída Gerada(`gabarito.xlsx`)
+## Após a Execução
+### 1. Saída Gerada(`gabarito.xlsx`)
 
 O script irá gerar um arquivo na raiz do projeto chamado gabarito.xlsx, contendo os dados originais acrescidos da seguinte coluna:
 
@@ -87,6 +88,17 @@ A solução utiliza uma abordagem em camadas ("Pipeline de Detecção") para max
     * Os nomes candidatos identificados pela IA passam por uma validação dupla para garantir que não são palavras comuns (falsos positivos):
         * **Base IBGE**: Verificação se o nome consta na base de dados do Censo IBGE.
         * **Verificação de Vocabulário**: Se o nome não for comum, o sistema verifica se é uma palavra de dicionário (ex: "Mesa", "Cadeira"). Se não for palavra de dicionário, é considerado um nome próprio raro, aumentando a sensibilidade do modelo.
+
+## 📜 Licença e Créditos
+
+Este projeto foi desenvolvido para fins de participação no **1º Hackathon em Controle Social: Desafio Participa DF**.
+
+### Créditos e Atribuições
+A solução utiliza recursos open-source e dados públicos, aos quais agradeço:
+
+* **IBGE (Instituto Brasileiro de Geografia e Estatística)**: A base de validação de nomes utiliza dados do Censo Demográfico, disponibilizados através do repositório [datasets-br/prenomes](https://github.com/datasets-br/prenomes).
+* **Spacy**: Biblioteca de Processamento de Linguagem Natural utilizada sob a licença MIT. O modelo `pt_core_news_lg` é distribuído pela Explosion AI.
+* **Pandas & OpenPyXL**: Bibliotecas fundamentais para a manipulação dos dados tabulares e arquivos Excel.
 
 
 

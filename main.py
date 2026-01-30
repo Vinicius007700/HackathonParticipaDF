@@ -14,8 +14,8 @@ def main():
     # uma extração de dados da coluna do texto, transformando em um data frame
     resultado = data.df[coluna_texto].apply(lambda x: pd.Series(pv.detecta_dados_sensiveis(x, data )))
     data.df['Contendo Dados Pessoais'] = resultado[0]
-    data.df['quais_dados'] = resultado[1]
     
+
     data.df.to_excel('gabarito.xlsx', index=False)
   
 
