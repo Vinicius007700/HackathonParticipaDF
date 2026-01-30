@@ -10,9 +10,9 @@ A organização dos arquivos segue uma lógica modular para facilitar a manuten�
 
 * **`main.py`**: Script principal responsável por orquestrar a execução, carregar os dados e gerar o relatório final.
 * **`assets/`**: Módulos auxiliares contendo a lógica de negócio.
-    ***`LoadData.py`***: Gerencia o carregamento de arquivos e recursos pesados (Modelo Spacy, Base IBGE).
-    *`private_data.py`: Contém as regras de detecção de dados sensíveis (CPFs, e-mails, nomes).
-    *`manipulate_str.py`: Funções utilitárias para tratamento de strings e normalização.
+    * `LoadData.py`: Gerencia o carregamento de arquivos e recursos pesados (Modelo Spacy, Base IBGE).
+    * `private_data.py`: Contém as regras de detecção de dados sensíveis (CPFs, e-mails, nomes).
+    * `manipulate_str.py`: Funções utilitárias para tratamento de strings e normalização.
 * **`data/`**: Diretório destinado aos arquivos de entrada (`.xlsx`) e bases de conhecimento (regras e nomes do IBGE).
 * **`requirements.txt`**: Lista de dependências para instalação automatizada.
 
@@ -28,19 +28,16 @@ A organização dos arquivos segue uma lógica modular para facilitar a manuten�
 Recomenda-se o uso de um ambiente virtual para isolar as dependências. Execute os comandos abaixo sequencialmente no terminal, a partir da raiz do projeto:
 
 **Windows:**
-bash
-
+```bash
 python -m venv venv
-
 venv\Scripts\activate
+```
 
 **Linux/ MacOS:**
-bash
-
+```bash
 python3 -m venv venv
-
 source venv/bin/activate
-
+```
 
 ### 3. Formato de Dados 
 Entrada esperada(`data/amostra.xlsx`): O arquivo deve ser uma planilha Excel (.xlsx) contendo obrigatoriamente:
@@ -55,13 +52,10 @@ Entrada esperada(`data/amostra.xlsx`): O arquivo deve ser uma planilha Excel (.x
 Ou seja, este formato de entrada a mesma estrutura do arquivo que foi oferecido de exemplo.
 
 ### 4. Instalação de Dependências e Como executar:
-bash
-
-
+```bash
 pip install -r requirements.txt
-
 python3 main.py
-
+```
 
 ## Após a Execução
 ### 1. Saída Gerada(`gabarito.xlsx`)
@@ -84,7 +78,7 @@ A solução utiliza uma abordagem em camadas ("Pipeline de Detecção") para max
 3.  **Processamento de Linguagem Natural (NLP)**:
     * Uso da biblioteca **Spacy** (modelo `pt_core_news_lg`) para identificar entidades nomeadas do tipo `PER` (Pessoas) dentro do contexto da frase, permitindo encontrar nomes que não seguem padrões numéricos.
 
-4.  **Validação Cruzada e Heurísticas**:
+4.  **Validação Cruzada**:
     * Os nomes candidatos identificados pela IA passam por uma validação dupla para garantir que não são palavras comuns (falsos positivos):
 
         * **Regras Blacklist**: Utilização de uma lista de bloqueio categorizada para refinar a extração:
