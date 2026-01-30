@@ -1,4 +1,4 @@
-# Solução de Anonimização - Hackathon Participa DF (Categoria Acesso à Informação)
+# Hackathon Participa DF (Categoria Acesso à Informação)
 
 Este projeto apresenta uma solução automatizada para identificar dados pessoais em pedidos de acesso à informação, utilizando técnicas híbridas de Expressões Regulares (Regex) e Processamento de Linguagem Natural (NLP), por meio da biblioteca Spacy.
 
