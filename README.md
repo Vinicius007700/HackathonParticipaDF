@@ -27,7 +27,9 @@ Recomenda-se o uso de um ambiente virtual para isolar as dependências. Execute 
 
 **Windows:**
 bash
+
 python -m venv venv
+
 venv\Scripts\activate
 
 **Linux/ MacOS:**
